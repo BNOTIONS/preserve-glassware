@@ -17,12 +17,16 @@ limitations under the License.
 <%@ page import="com.google.api.services.mirror.model.Contact" %>
 <%@ page import="com.google.glassware.MirrorClient" %>
 <%@ page import="com.google.glassware.WebUtil" %>
-<%@ page
-    import="java.util.List" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.IOException" %>
 <%@ page import="com.google.api.services.mirror.model.TimelineItem" %>
 <%@ page import="com.google.api.services.mirror.model.Subscription" %>
 <%@ page import="com.google.api.services.mirror.model.Attachment" %>
 <%@ page import="com.google.glassware.MainServlet" %>
+<%@ page import="com.google.api.services.drive.Drive" %>
+<%@ page import="com.google.api.services.drive.model.File" %>
+<%@ page import="com.google.api.services.drive.model.FileList" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -35,22 +39,36 @@ limitations under the License.
 
   List<TimelineItem> timelineItems = MirrorClient.listItems(credential, 3L).getItems();
 
-
   List<Subscription> subscriptions = MirrorClient.listSubscriptions(credential).getItems();
   boolean timelineSubscriptionExists = false;
-  boolean locationSubscriptionExists = false;
 
 
   if (subscriptions != null) {
     for (Subscription subscription : subscriptions) {
-      if (subscription.getId().equals("timeline")) {
+      if (!subscription.getId().equals("timeline")) {
+        timelineSubscriptionExists = false;
+      } else {
         timelineSubscriptionExists = true;
-      }
-      if (subscription.getId().equals("locations")) {
-        locationSubscriptionExists = true;
       }
     }
   }
+
+  Drive drive = com.google.glassware.DriveUtils.buildDriveService(credential);
+  List<File> notes = new ArrayList<File>();
+  Drive.Files.List filesRequest = drive.files().list();
+  do {
+      try {
+          FileList files = filesRequest.execute();
+
+          notes.addAll(files.getItems());
+          filesRequest.setPageToken(files.getNextPageToken());
+      } catch (IOException e) {
+          filesRequest.setPageToken(null);
+      }
+  } while (filesRequest.getPageToken() != null &&
+          filesRequest.getPageToken().length() > 0);
+
+
 
 %>
 <html>
@@ -104,34 +122,10 @@ limitations under the License.
 
     <div style="margin-top: 5px;">
 
-      <% if (timelineItems != null) {
-        for (TimelineItem timelineItem : timelineItems) { %>
-      <ul class="span3 tile">
-        <li><strong>ID: </strong> <%= timelineItem.getId() %>
-        </li>
-        <li>
-          <strong>Text: </strong> <%= timelineItem.getText() %>
-        </li>
-        <li>
-          <strong>HTML: </strong> <%= timelineItem.getHtml() %>
-        </li>
-        <li>
-          <strong>Attachments: </strong>
-          <%
-          if (timelineItem.getAttachments() != null) {
-            for (Attachment attachment : timelineItem.getAttachments()) {
-              if (MirrorClient.getAttachmentContentType(credential, timelineItem.getId(), attachment.getId()).startsWith("image")) { %>
-          <img src="<%= appBaseUrl + "attachmentproxy?attachment=" +
-            attachment.getId() + "&timelineItem=" + timelineItem.getId() %>">
-          <% } else { %>
-          <a href="<%= appBaseUrl + "attachmentproxy?attachment=" +
-            attachment.getId() + "&timelineItem=" + timelineItem.getId() %>">Download</a>
-          <% }
-            }
-          } %>
-        </li>
-
-      </ul>
+      <ol>
+      <% if (notes != null) {
+        for (File note : notes) { %>
+        <li><a href="<%= note.getWebViewLink() %>"><%= note.getTitle() %></a></li>
       <% }
       } %>
     </div>
@@ -143,38 +137,9 @@ limitations under the License.
     <div class="span4">
       <h2>Timeline</h2>
 
-      <p>When you first sign in, this Glassware inserts a welcome message. Use
-        these controls to insert more items into your timeline. Learn more about
-        the timeline APIs
-        <a href="https://developers.google.com/glass/timeline">here</a></p>
-
-
       <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertItem">
-        <textarea name="message">Hello World!</textarea><br/>
-        <button class="btn" type="submit">The above message</button>
-      </form>
-
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertItem">
-        <input type="hidden" name="message" value="Chipotle says 'hi'!">
-        <input type="hidden" name="imageUrl" value="<%= appBaseUrl +
-               "static/images/chipotle-tube-640x360.jpg" %>">
-        <input type="hidden" name="contentType" value="image/jpeg">
-
-        <button class="btn" type="submit">A picture
-          <img class="button-icon" src="<%= appBaseUrl +
-               "static/images/chipotle-tube-640x360.jpg" %>">
-        </button>
-      </form>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertItemWithAction">
-        <button class="btn" type="submit">A card you can reply to</button>
-      </form>
-      <hr>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertItemAllUsers">
-        <button class="btn" type="submit">A card to all users</button>
+        <input type="hidden" name="operation" value="insertPinCard">
+        <button class="btn" type="submit">Insert Pin Card</button>
       </form>
 
     </div>
@@ -185,13 +150,6 @@ limitations under the License.
 
     <div class="span4">
       <h2>Subscriptions</h2>
-
-      <p>By default a subscription is inserted for changes to the
-        <code>timeline</code> collection. Learn more about subscriptions
-        <a href="https://developers.google.com/glass/subscriptions">here</a></p>
-
-      <p class="label label-info">Note: Subscriptions require SSL. <br>They will
-        not work on localhost.</p>
 
       <% if (timelineSubscriptionExists) { %>
       <form action="<%= WebUtil.buildUrl(request, "/main") %>"
@@ -210,22 +168,6 @@ limitations under the License.
       </form>
       <% }%>
 
-      <% if (locationSubscriptionExists) { %>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>"
-            method="post">
-        <input type="hidden" name="subscriptionId" value="locations">
-        <input type="hidden" name="operation" value="deleteSubscription">
-        <button class="btn" type="submit" class="delete">Unsubscribe from
-          location updates
-        </button>
-      </form>
-      <% } else { %>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertSubscription">
-        <input type="hidden" name="collection" value="locations">
-        <button class="btn" type="submit">Subscribe to location updates</button>
-      </form>
-      <% }%>
     </div>
   </div>
 </div>

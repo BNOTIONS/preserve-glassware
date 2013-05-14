@@ -46,7 +46,11 @@ public class NewUserBootstrapper {
         timelineItem.setText("Thank you for signing up got Glass2Drive. Pin the next message you receive from us.");
         timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
         TimelineItem insertedItem = MirrorClient.insertTimelineItem(credential, timelineItem);
-        LOG.info("Bootstrapper inserted welcome message " + insertedItem.getId() + " for user "
+        LOG.info("Bootstrapper inserted Welcome Message " + insertedItem.getId() + " for user "
                 + userId);
+
+        MainServlet.insertPinCard(credential);
+        LOG.info("Bootstrapper inserted Pin Card");
+
     }
 }

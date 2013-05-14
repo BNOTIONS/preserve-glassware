@@ -5,13 +5,15 @@
     <ignored path="glass-java-starter-project.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AuthServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1366164437068" ignored="false" />
-    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368567512538" ignored="false" />
+    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368569360238" ignored="false" />
     <file path="/pom.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368428488180" ignored="false" />
     <file path="/appengine-web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368466409524" ignored="false" />
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
     <file path="/AuthorizeServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816368777" ignored="false" />
-    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368466143050" ignored="false" />
-    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368420726422" ignored="false" />
+    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570776498" ignored="false" />
+    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368568864311" ignored="false" />
+    <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368568885210" ignored="false" />
+    <file path="/DriveUtils.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570715898" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,31 +83,7 @@
     <favorites_list name="glass2drive" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="MainServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="24" selection-start="4724" selection-end="4724" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#6171#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotifyServlet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="20" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-0.015494636">
-              <folding>
-                <element signature="e#0#9172#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -122,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/google/glassware/ListableAppEngineCredentialStore.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/AuthFilter.java" />
         <option value="$PROJECT_DIR$/web/authorize.jsp" />
         <option value="$PROJECT_DIR$/src/com/skewable/servlet/AuthorizeServlet.java" />
@@ -131,13 +108,14 @@
         <option value="$MAVEN_REPOSITORY$/com/google/apis/google-api-services-mirror/v1-rev2-1.14.1-beta/google-api-services-mirror-v1-rev2-1.14.1-beta.pom" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/AuthServlet.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java" />
         <option value="$PROJECT_DIR$/web/oauth.properties" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MirrorClient.java" />
-        <option value="$PROJECT_DIR$/src/com/google/glassware/MainServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java" />
+        <option value="$PROJECT_DIR$/src/com/google/glassware/DriveUtils.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/src/com/google/glassware/MainServlet.java" />
       </list>
     </option>
   </component>
@@ -521,8 +499,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="19" width="1100" height="1911" extended-state="7" />
-    <editor active="true" />
+    <frame x="-10" y="19" width="1100" height="1911" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -536,7 +514,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30759802" sideWeight="0.2182681" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298484" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39989546" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18955512" sideWeight="0.6736959" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18955512" sideWeight="0.6736959" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3033033" sideWeight="0.8710191" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -612,18 +590,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/starter-project.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="46" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/oauth.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="23" selection-start="188" selection-end="188" vertical-scroll-proportion="0.055976678" />
@@ -649,13 +615,6 @@
     <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/google-api-client-1.15.0-rc.jar!/com/google/api/client/googleapis/services/AbstractGoogleClientRequest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="13" selection-start="4135" selection-end="4135" vertical-scroll-proportion="0.42840096" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="31" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/SignOutServlet.java">
@@ -686,11 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="27" selection-start="2339" selection-end="2339" vertical-scroll-proportion="0.47031963" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/WebUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="13" selection-start="840" selection-end="840" vertical-scroll-proportion="0.06849315">
@@ -698,21 +652,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/DriveUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="24" selection-start="4724" selection-end="4724" vertical-scroll-proportion="0.0">
+        <state line="14" column="33" selection-start="436" selection-end="436" vertical-scroll-proportion="0.19729888">
           <folding>
-            <element signature="e#0#6171#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.6.0_41/src.zip!/java/io/IOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="17" selection-start="497" selection-end="508" vertical-scroll-proportion="0.22377622">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="20" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-0.015494636">
+        <state line="45" column="113" selection-start="1693" selection-end="1699" vertical-scroll-proportion="-22.36">
           <folding>
-            <element signature="e#0#9172#0" expanded="true" />
+            <element signature="e#0#8182#0" expanded="true" />
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="42" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.52860546">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="28" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="41" selection-start="5774" selection-end="5774" vertical-scroll-proportion="0.7322372">
+          <folding>
+            <element signature="e#0#6256#0" expanded="true" />
           </folding>
         </state>
       </provider>

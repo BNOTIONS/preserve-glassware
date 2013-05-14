@@ -16,7 +16,6 @@
 package com.google.glassware;
 
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.InputStreamContent;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson.JacksonFactory;
@@ -32,7 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Logger;
 
 /**
@@ -43,22 +41,6 @@ import java.util.logging.Logger;
 public class NotifyServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
-
-    static Drive buildDriveService(Credential credential) throws IOException {
-
-        FileInputStream authPropertiesStream = new FileInputStream("oauth.properties");
-        Properties authProperties = new Properties();
-        authProperties.load(authPropertiesStream);
-        String clientId = authProperties.getProperty("client_id");
-        String clientSecret = authProperties.getProperty("client_secret");
-
-        GoogleCredential credentials = new GoogleCredential.Builder().setTransport(credential.getTransport())
-                .setJsonFactory(credential.getJsonFactory()).setClientSecrets(clientId, clientSecret).build();
-        credentials.setAccessToken(credential.getAccessToken());
-        credentials.setRefreshToken(credential.getRefreshToken());
-
-        return new Drive.Builder(credential.getTransport(), credential.getJsonFactory(), credentials).setApplicationName("checkin2glass").build();
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -146,7 +128,7 @@ public class NotifyServlet extends HttpServlet {
 
                 LOG.info("Received a delete note request");
                 TimelineItem deleteItem = mirrorClient.timeline().get(notification.getItemId()).execute();
-                Drive drive = buildDriveService(credential);
+                Drive drive = DriveUtils.buildDriveService(credential);
                 drive.files().delete(deleteItem.getSourceItemId());
                 LOG.info("Note Deleted: " + deleteItem.getSourceItemId());
 
@@ -158,7 +140,7 @@ public class NotifyServlet extends HttpServlet {
 
     private String sendImageToDrive(Credential credential, InputStream stream, String fileName) throws IOException {
 
-        Drive drive = buildDriveService(credential);
+        Drive drive = DriveUtils.buildDriveService(credential);
 
         File body = new File();
         body.setTitle(fileName);
@@ -173,7 +155,7 @@ public class NotifyServlet extends HttpServlet {
 
     private String sendTextNoteToDrive(Credential credential, String message, String fileName) throws IOException {
 
-        Drive drive = buildDriveService(credential);
+        Drive drive = DriveUtils.buildDriveService(credential);
 
         File body = new File();
         body.setTitle(fileName);

@@ -90,24 +90,9 @@ public class MainServlet extends HttpServlet {
 
             message = "A timeline item has been inserted.";
 
-        } else if (req.getParameter("operation").equals("insertItemWithAction")) {
+        } else if (req.getParameter("operation").equals("insertPinCard")) {
             LOG.fine("Inserting Timeline Item");
-            TimelineItem timelineItem = new TimelineItem();
-            timelineItem.setText("Glass2Drive");
-
-            List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-            // Built in actions
-            List<MenuValue> replyValues = new ArrayList<MenuValue>();
-            replyValues.add(new MenuValue().setState("DEFAULT").setDisplayName("New Note"));
-            menuItemList.add(new MenuItem().setAction("REPLY").setValues(replyValues));
-            menuItemList.add(new MenuItem().setAction("TOGGLE_PINNED"));
-            menuItemList.add(new MenuItem().setAction("DELETE"));
-
-
-            timelineItem.setMenuItems(menuItemList);
-            timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-
-            MirrorClient.insertTimelineItem(credential, timelineItem);
+            insertPinCard(credential);
 
             message = "A timeline item with actions has been inserted.";
 
@@ -142,5 +127,27 @@ public class MainServlet extends HttpServlet {
         }
         WebUtil.setFlash(req, message);
         res.sendRedirect(WebUtil.buildUrl(req, "/"));
+    }
+
+
+    public static void insertPinCard(Credential credential) throws IOException {
+
+        TimelineItem timelineItem = new TimelineItem();
+        timelineItem.setText("Glass2Drive");
+
+        List<MenuItem> menuItemList = new ArrayList<MenuItem>();
+        // Built in actions
+        List<MenuValue> textNoteValues = new ArrayList<MenuValue>();
+        textNoteValues.add(new MenuValue().setState("DEFAULT").setDisplayName("Text Note"));
+        menuItemList.add(new MenuItem().setAction("REPLY").setValues(textNoteValues));
+        menuItemList.add(new MenuItem().setAction("TOGGLE_PINNED"));
+        menuItemList.add(new MenuItem().setAction("DELETE"));
+
+
+        timelineItem.setMenuItems(menuItemList);
+        timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+
+        MirrorClient.insertTimelineItem(credential, timelineItem);
+
     }
 }
