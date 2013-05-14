@@ -61,27 +61,20 @@ public class NotifyServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Respond with OK and status 200 in a timely fashion to prevent redelivery
         response.setContentType("text/html");
         Writer writer = response.getWriter();
         writer.append("OK");
         writer.close();
 
-        // Get the notification object from the request body (into a string so we
-        // can log it)
-        BufferedReader notificationReader =
-                new BufferedReader(new InputStreamReader(request.getInputStream()));
+        BufferedReader notificationReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String notificationString = "";
 
-        // Count the lines as a very basic way to prevent Denial of Service attacks
         int lines = 0;
         while (notificationReader.ready()) {
             notificationString += notificationReader.readLine();
             lines++;
-
-            // No notification would ever be this long. Something is very wrong.
             if(lines > 1000) {
                 throw new IOException("Attempted to parse notification payload that was unexpectedly long.");
             }
@@ -91,83 +84,63 @@ public class NotifyServlet extends HttpServlet {
 
         JsonFactory jsonFactory = new JacksonFactory();
 
-        // If logging the payload is not as important, use
-        // jacksonFactory.fromInputStream instead.
         Notification notification = jsonFactory.fromString(notificationString, Notification.class);
 
         LOG.info("Got a notification with ID: " + notification.getItemId());
 
-        // Figure out the impacted user and get their credentials for API calls
         String userId = notification.getUserToken();
         Credential credential = AuthUtil.getCredential(userId);
         Mirror mirrorClient = MirrorClient.getMirror(credential);
 
 
         if (notification.getCollection().equals("timeline")) {
-            // Get the impacted timeline item
+
             TimelineItem timelineItem = mirrorClient.timeline().get(notification.getItemId()).execute();
             LOG.info("Notification impacted timeline item with ID: " + timelineItem.getId());
 
-            // If it was a share, and contains a photo, bounce it back to the user.
             if (notification.getUserActions().contains(new UserAction().setType("SHARE"))
                     && timelineItem.getAttachments() != null && timelineItem.getAttachments().size() > 0) {
-                LOG.info("It was a share of a photo. Sending the photo back to the user.");
+                LOG.info("It was a share of a photo.");
 
-                // Get the first attachment
                 String attachmentId = timelineItem.getAttachments().get(0).getId();
                 LOG.info("Found attachment with ID " + attachmentId);
 
-                // Get the attachment content
-                InputStream stream =
-                        MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
+                InputStream driveStream = MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
+                String fileName = "g2d-image-" + System.currentTimeMillis();
+                String fileId = sendImageToDrive(credential, driveStream, fileName);
 
-                // Create a new timeline item with the attachment
+                InputStream timelineStream = MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
                 TimelineItem echoPhotoItem = new TimelineItem();
                 echoPhotoItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-                echoPhotoItem.setText("Echoing your shared photo");
-
-                MirrorClient.insertTimelineItem(credential, echoPhotoItem, "image/jpeg", stream);
+                echoPhotoItem.setText("Image Saved: " + fileName);
+                echoPhotoItem.setSourceItemId(fileId);
+                List<MenuItem> menuItemList = new ArrayList<MenuItem>();
+                menuItemList.add(new MenuItem().setAction("SHARE"));
+                menuItemList.add(new MenuItem().setAction("DELETE"));
+                echoPhotoItem.setMenuItems(menuItemList);
+                MirrorClient.insertTimelineItem(credential, echoPhotoItem, "image/jpeg", timelineStream);
 
             } else if (notification.getUserActions().contains(new UserAction().setType("REPLY"))) {
 
                 LOG.info("Received a new note request");
-
                 LOG.info("Removing standard speech to text card");
                 deleteMostRecentTimelineItem(credential);
 
                 TimelineItem replyItem = mirrorClient.timeline().get(notification.getItemId()).execute();
                 String fileName = "g2d-note-" + System.currentTimeMillis();
-                Drive drive = buildDriveService(credential);
+                String fileId = sendTextNoteToDrive(credential, replyItem.getText(), fileName);
 
-                File body = new File();
-                body.setTitle(fileName);
-                body.setMimeType("text/plain");
-
-                LOG.info("Inserting new note file to Drive: " + fileName);
-
-                try {
-                    String noteMessage = replyItem.getText();
-                    LOG.info("Note Content: " + noteMessage);
-                    ByteArrayInputStream is = new ByteArrayInputStream(noteMessage.getBytes());
-                    InputStreamContent content = new InputStreamContent("text/plain", is);
-                    File file = drive.files().insert(body, content).execute();
-                    LOG.info("Drive result: " + file.getTitle());
-
-                    TimelineItem echoNoteItem = new TimelineItem();
-                    echoNoteItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-                    echoNoteItem.setText("Note Saved: " + fileName);
-                    List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-                    menuItemList.add(new MenuItem().setAction("SHARE"));
-                    menuItemList.add(new MenuItem().setAction("READ_ALOUD"));
-                    menuItemList.add(new MenuItem().setAction("DELETE"));
-                    echoNoteItem.setMenuItems(menuItemList);
-                    echoNoteItem.setSpeakableText(noteMessage);
-                    echoNoteItem.setSourceItemId(file.getId());
-                    MirrorClient.insertTimelineItem(credential, echoNoteItem);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                TimelineItem echoNoteItem = new TimelineItem();
+                echoNoteItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+                echoNoteItem.setText("Note Saved: " + fileName);
+                List<MenuItem> menuItemList = new ArrayList<MenuItem>();
+                menuItemList.add(new MenuItem().setAction("SHARE"));
+                menuItemList.add(new MenuItem().setAction("READ_ALOUD"));
+                menuItemList.add(new MenuItem().setAction("DELETE"));
+                echoNoteItem.setMenuItems(menuItemList);
+                echoNoteItem.setSpeakableText(replyItem.getText());
+                echoNoteItem.setSourceItemId(fileId);
+                MirrorClient.insertTimelineItem(credential, echoNoteItem);
 
             } else if (notification.getUserActions().contains(new UserAction().setType("DELETE"))) {
 
@@ -183,7 +156,38 @@ public class NotifyServlet extends HttpServlet {
         }
     }
 
-    public void deleteMostRecentTimelineItem(Credential credential) throws IOException {
+    private String sendImageToDrive(Credential credential, InputStream stream, String fileName) throws IOException {
+
+        Drive drive = buildDriveService(credential);
+
+        File body = new File();
+        body.setTitle(fileName);
+        body.setMimeType("image/jpeg");
+
+        InputStreamContent content = new InputStreamContent("image/jpeg", stream);
+        File file = drive.files().insert(body, content).setConvert(true).execute();
+        LOG.info("Drive result: " + file.getTitle());
+
+        return file.getId();
+    }
+
+    private String sendTextNoteToDrive(Credential credential, String message, String fileName) throws IOException {
+
+        Drive drive = buildDriveService(credential);
+
+        File body = new File();
+        body.setTitle(fileName);
+        body.setMimeType("text/plain");
+
+        ByteArrayInputStream is = new ByteArrayInputStream(message.getBytes());
+        InputStreamContent content = new InputStreamContent("text/plain", is);
+        File file = drive.files().insert(body, content).setConvert(true).execute();
+        LOG.info("Drive result: " + file.getTitle());
+
+        return file.getId();
+    }
+
+    private void deleteMostRecentTimelineItem(Credential credential) throws IOException {
 
         Mirror mirror = MirrorClient.getMirror(credential);
         Mirror.Timeline.List request = mirror.timeline().list();

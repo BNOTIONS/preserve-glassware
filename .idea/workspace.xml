@@ -5,7 +5,7 @@
     <ignored path="glass-java-starter-project.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AuthServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1366164437068" ignored="false" />
-    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368565386110" ignored="false" />
+    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368567512538" ignored="false" />
     <file path="/pom.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368428488180" ignored="false" />
     <file path="/appengine-web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368466409524" ignored="false" />
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
@@ -96,9 +96,9 @@
       <file leaf-file-name="NotifyServlet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="41" selection-start="8142" selection-end="8142" vertical-scroll-proportion="0.6476806">
+            <state line="69" column="20" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-0.015494636">
               <folding>
-                <element signature="e#0#9023#0" expanded="true" />
+                <element signature="e#0#9172#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -709,9 +709,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="41" selection-start="8142" selection-end="8142" vertical-scroll-proportion="0.6476806">
+        <state line="69" column="20" selection-start="2959" selection-end="2959" vertical-scroll-proportion="-0.015494636">
           <folding>
-            <element signature="e#0#9023#0" expanded="true" />
+            <element signature="e#0#9172#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
