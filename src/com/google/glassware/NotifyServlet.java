@@ -111,31 +111,32 @@ public class NotifyServlet extends HttpServlet {
             // If it was a share, and contains a photo, bounce it back to the user.
             if (notification.getUserActions().contains(new UserAction().setType("SHARE"))
                     && timelineItem.getAttachments() != null && timelineItem.getAttachments().size() > 0) {
-//                LOG.info("It was a share of a photo. Sending the photo back to the user.");
-//
-//                // Get the first attachment
-//                String attachmentId = timelineItem.getAttachments().get(0).getId();
-//                LOG.info("Found attachment with ID " + attachmentId);
-//
-//                // Get the attachment content
-//                InputStream stream =
-//                        MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
-//
-//                // Create a new timeline item with the attachment
-//                TimelineItem echoPhotoItem = new TimelineItem();
-//                echoPhotoItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-//                echoPhotoItem.setText("Echoing your shared photo");
-//
-//                MirrorClient.insertTimelineItem(credential, echoPhotoItem, "image/jpeg", stream);
+                LOG.info("It was a share of a photo. Sending the photo back to the user.");
+
+                // Get the first attachment
+                String attachmentId = timelineItem.getAttachments().get(0).getId();
+                LOG.info("Found attachment with ID " + attachmentId);
+
+                // Get the attachment content
+                InputStream stream =
+                        MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
+
+                // Create a new timeline item with the attachment
+                TimelineItem echoPhotoItem = new TimelineItem();
+                echoPhotoItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+                echoPhotoItem.setText("Echoing your shared photo");
+
+                MirrorClient.insertTimelineItem(credential, echoPhotoItem, "image/jpeg", stream);
 
             } else if (notification.getUserActions().contains(new UserAction().setType("REPLY"))) {
 
                 LOG.info("Received a new note request");
 
+                LOG.info("Removing standard speech to text card");
+                deleteMostRecentTimelineItem(credential);
+
                 TimelineItem replyItem = mirrorClient.timeline().get(notification.getItemId()).execute();
-
                 String fileName = "g2d-note-" + System.currentTimeMillis();
-
                 Drive drive = buildDriveService(credential);
 
                 File body = new File();
@@ -161,15 +162,35 @@ public class NotifyServlet extends HttpServlet {
                     menuItemList.add(new MenuItem().setAction("DELETE"));
                     echoNoteItem.setMenuItems(menuItemList);
                     echoNoteItem.setSpeakableText(noteMessage);
+                    echoNoteItem.setSourceItemId(file.getId());
                     MirrorClient.insertTimelineItem(credential, echoNoteItem);
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
+            } else if (notification.getUserActions().contains(new UserAction().setType("DELETE"))) {
+
+                LOG.info("Received a delete note request");
+                TimelineItem deleteItem = mirrorClient.timeline().get(notification.getItemId()).execute();
+                Drive drive = buildDriveService(credential);
+                drive.files().delete(deleteItem.getSourceItemId());
+                LOG.info("Note Deleted: " + deleteItem.getSourceItemId());
+
             } else {
                 LOG.warning("I don't know what to do with this notification, so I'm ignoring it.");
             }
         }
     }
+
+    public void deleteMostRecentTimelineItem(Credential credential) throws IOException {
+
+        Mirror mirror = MirrorClient.getMirror(credential);
+        Mirror.Timeline.List request = mirror.timeline().list();
+        TimelineListResponse timelineItems = request.execute();
+        TimelineItem item = timelineItems.getItems().get(0);
+        mirror.timeline().delete(item.getId());
+
+    }
+
 }
