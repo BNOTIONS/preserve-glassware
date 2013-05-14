@@ -33,8 +33,6 @@ limitations under the License.
 
   Credential credential = com.google.glassware.AuthUtil.getCredential(userId);
 
-  Contact contact = MirrorClient.getContact(credential, MainServlet.CONTACT_NAME);
-
   List<TimelineItem> timelineItems = MirrorClient.listItems(credential, 3L).getItems();
 
 
@@ -58,7 +56,7 @@ limitations under the License.
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glassware Starter Project</title>
+  <title>Glass2Drive</title>
   <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"
         media="screen">
 
@@ -82,7 +80,7 @@ limitations under the License.
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">Glassware Starter Project: Java Edition</a>
+      <a class="brand" href="#">Glass2Drive</a>
 
       <div class="nav-collapse collapse">
         <form class="navbar-form pull-right" action="/signout" method="post">
@@ -183,31 +181,6 @@ limitations under the License.
 
     <div class="span4">
       <h2>Contacts</h2>
-
-      <p>By default, this project inserts a single contact that accepts
-        all content types. Learn more about contacts
-        <a href="https://developers.google.com/glass/contacts">here</a>.</p>
-
-      <% if (contact == null) { %>
-      <form class="span3" action="<%= WebUtil.buildUrl(request, "/main") %>"
-            method="post">
-        <input type="hidden" name="operation" value="insertContact">
-        <input type="hidden" name="iconUrl" value="<%= appBaseUrl +
-               "static/images/chipotle-tube-640x360.jpg" %>">
-        <input type="hidden" name="name"
-               value="<%= MainServlet.CONTACT_NAME %>">
-        <button class="btn" type="submit">Insert Java Quick Start Contact
-        </button>
-      </form>
-      <% } else { %>
-      <form class="span3" action="<%= WebUtil.buildUrl(request, "/main") %>"
-            method="post">
-        <input type="hidden" name="operation" value="deleteContact">
-        <input type="hidden" name="id" value="<%= MainServlet.CONTACT_NAME %>">
-        <button class="btn" type="submit">Delete Java Quick Start Contact
-        </button>
-      </form>
-      <% } %>
     </div>
 
     <div class="span4">

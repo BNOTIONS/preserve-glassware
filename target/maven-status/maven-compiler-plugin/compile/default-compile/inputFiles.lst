@@ -1,0 +1,11 @@
+/home/patience/java/glass2drive/src/com/google/glassware/MirrorClient.java
+/home/patience/java/glass2drive/src/com/google/glassware/NewUserBootstrapper.java
+/home/patience/java/glass2drive/src/com/google/glassware/NotifyServlet.java
+/home/patience/java/glass2drive/src/com/google/glassware/AttachmentProxyServlet.java
+/home/patience/java/glass2drive/src/com/google/glassware/AuthUtil.java
+/home/patience/java/glass2drive/src/com/google/glassware/AuthServlet.java
+/home/patience/java/glass2drive/src/com/google/glassware/AuthFilter.java
+/home/patience/java/glass2drive/src/com/google/glassware/MainServlet.java
+/home/patience/java/glass2drive/src/com/google/glassware/SignOutServlet.java
+/home/patience/java/glass2drive/src/com/google/glassware/ListableAppEngineCredentialStore.java
+/home/patience/java/glass2drive/src/com/google/glassware/WebUtil.java

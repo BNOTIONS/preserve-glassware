@@ -17,161 +17,130 @@ package com.google.glassware;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.services.mirror.model.Contact;
-import com.google.api.services.mirror.model.MenuItem;
-import com.google.api.services.mirror.model.MenuValue;
-import com.google.api.services.mirror.model.NotificationConfig;
-import com.google.api.services.mirror.model.TimelineItem;
+import com.google.api.services.mirror.model.*;
 import com.google.common.collect.Lists;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * Handles POST requests from index.jsp
- * 
+ *
  * @author Jenny Murphy - http://google.com/+JennyMurphy
  */
 public class MainServlet extends HttpServlet {
-  private static final Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
-  public static final String CONTACT_NAME = "Java Quick Start";
 
-  /**
-   * Do stuff when buttons on index.jsp are clicked
-   */
-  @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    private static final Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
 
-    String userId = AuthUtil.getUserId(req);
-    Credential credential = AuthUtil.newAuthorizationCodeFlow().loadCredential(userId);
-    String message = "";
+    /**
+     * Do stuff when buttons on index.jsp are clicked
+     */
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-    if (req.getParameter("operation").equals("insertSubscription")) {
+        String userId = AuthUtil.getUserId(req);
+        Credential credential = AuthUtil.newAuthorizationCodeFlow().loadCredential(userId);
+        String message = "";
 
-      // subscribe (only works deployed to production)
-      try {
-        MirrorClient.insertSubscription(credential, WebUtil.buildUrl(req, "/notify"), userId,
-            req.getParameter("collection"));
-        message = "Application is now subscribed to updates.";
-      } catch (GoogleJsonResponseException e) {
-        LOG.warning("Could not subscribe " + WebUtil.buildUrl(req, "/notify") + " because "
-            + e.getDetails().toPrettyString());
-        message = "Failed to subscribe. Check your log for details";
-      }
+        if (req.getParameter("operation").equals("insertSubscription")) {
 
-    } else if (req.getParameter("operation").equals("deleteSubscription")) {
+            // subscribe (only works deployed to production)
+            try {
+                MirrorClient.insertSubscription(credential, WebUtil.buildUrl(req, "/notify"), userId,
+                        req.getParameter("collection"));
+                message = "Application is now subscribed to updates.";
+            } catch (GoogleJsonResponseException e) {
+                LOG.warning("Could not subscribe " + WebUtil.buildUrl(req, "/notify") + " because "
+                        + e.getDetails().toPrettyString());
+                message = "Failed to subscribe. Check your log for details";
+            }
 
-      // subscribe (only works deployed to production)
-      MirrorClient.deleteSubscription(credential, req.getParameter("subscriptionId"));
+        } else if (req.getParameter("operation").equals("deleteSubscription")) {
 
-      message = "Application has been unsubscribed.";
+            // subscribe (only works deployed to production)
+            MirrorClient.deleteSubscription(credential, req.getParameter("subscriptionId"));
 
-    } else if (req.getParameter("operation").equals("insertItem")) {
-      LOG.fine("Inserting Timeline Item");
-      TimelineItem timelineItem = new TimelineItem();
+            message = "Application has been unsubscribed.";
 
-      if (req.getParameter("message") != null) {
-        timelineItem.setText(req.getParameter("message"));
-      }
+        } else if (req.getParameter("operation").equals("insertItem")) {
+            LOG.fine("Inserting Timeline Item");
+            TimelineItem timelineItem = new TimelineItem();
 
-      // Triggers an audible tone when the timeline item is received
-      timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+            if (req.getParameter("message") != null) {
+                timelineItem.setText(req.getParameter("message"));
+            }
 
-      if (req.getParameter("imageUrl") != null) {
-        // Attach an image, if we have one
-        URL url = new URL(req.getParameter("imageUrl"));
-        String contentType = req.getParameter("contentType");
-        MirrorClient.insertTimelineItem(credential, timelineItem, contentType, url.openStream());
-      } else {
-        MirrorClient.insertTimelineItem(credential, timelineItem);
-      }
+            // Triggers an audible tone when the timeline item is received
+            timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
 
-      message = "A timeline item has been inserted.";
+            if (req.getParameter("imageUrl") != null) {
+                // Attach an image, if we have one
+                URL url = new URL(req.getParameter("imageUrl"));
+                String contentType = req.getParameter("contentType");
+                MirrorClient.insertTimelineItem(credential, timelineItem, contentType, url.openStream());
+            } else {
+                MirrorClient.insertTimelineItem(credential, timelineItem);
+            }
 
-    } else if (req.getParameter("operation").equals("insertItemWithAction")) {
-      LOG.fine("Inserting Timeline Item");
-      TimelineItem timelineItem = new TimelineItem();
-      timelineItem.setText("Tell me what you had for lunch :)");
+            message = "A timeline item has been inserted.";
 
-      List<MenuItem> menuItemList = new ArrayList<MenuItem>();
-      // Built in actions
-      menuItemList.add(new MenuItem().setAction("REPLY"));
-      menuItemList.add(new MenuItem().setAction("READ_ALOUD"));
+        } else if (req.getParameter("operation").equals("insertItemWithAction")) {
+            LOG.fine("Inserting Timeline Item");
+            TimelineItem timelineItem = new TimelineItem();
+            timelineItem.setText("Glass2Drive");
 
-      // And custom actions
-      List<MenuValue> menuValues = new ArrayList<MenuValue>();
-      menuValues.add(new MenuValue().setIconUrl(WebUtil.buildUrl(req, "/static/images/drill.png"))
-          .setDisplayName("Drill In"));
-      menuItemList.add(new MenuItem().setValues(menuValues).setId("drill").setAction("CUSTOM"));
+            List<MenuItem> menuItemList = new ArrayList<MenuItem>();
+            // Built in actions
+            List<MenuValue> replyValues = new ArrayList<MenuValue>();
+            replyValues.add(new MenuValue().setState("DEFAULT").setDisplayName("New Note"));
+            menuItemList.add(new MenuItem().setAction("REPLY").setValues(replyValues));
+            menuItemList.add(new MenuItem().setAction("TOGGLE_PINNED"));
+            menuItemList.add(new MenuItem().setAction("DELETE"));
 
-      timelineItem.setMenuItems(menuItemList);
-      timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
 
-      MirrorClient.insertTimelineItem(credential, timelineItem);
+            timelineItem.setMenuItems(menuItemList);
+            timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
 
-      message = "A timeline item with actions has been inserted.";
+            MirrorClient.insertTimelineItem(credential, timelineItem);
 
-    } else if (req.getParameter("operation").equals("insertContact")) {
-      if (req.getParameter("iconUrl") == null || req.getParameter("name") == null) {
-        message = "Must specify iconUrl and name to insert contact";
-      } else {
-        // Insert a contact
-        LOG.fine("Inserting contact Item");
-        Contact contact = new Contact();
-        contact.setId(req.getParameter("name"));
-        contact.setDisplayName(req.getParameter("name"));
-        contact.setImageUrls(Lists.newArrayList(req.getParameter("iconUrl")));
-        MirrorClient.insertContact(credential, contact);
+            message = "A timeline item with actions has been inserted.";
 
-        message = "Inserted contact: " + req.getParameter("name");
-      }
+        } else if (req.getParameter("operation").equals("insertItemAllUsers")) {
+            if (req.getServerName().contains("glass-java-starter-demo.appspot.com")) {
+                message = "This function is disabled on the demo instance.";
+            }
 
-    } else if (req.getParameter("operation").equals("deleteContact")) {
+            List<String> users = AuthUtil.getAllUserIds();
+            LOG.info("found " + users.size() + " users");
+            if (users.size() > 10) {
+                // We wouldn't want you to run out of quota on your first day!
+                message =
+                        "Total user count is " + users.size() + ". Aborting broadcast " + "to save your quota.";
+            } else {
+                TimelineItem allUsersItem = new TimelineItem();
+                allUsersItem.setText("Hello Everyone!");
 
-      // Insert a contact
-      LOG.fine("Deleting contact Item");
-      MirrorClient.deleteContact(credential, req.getParameter("id"));
+                // TODO: add a picture of a cat
+                for (String user : users) {
+                    Credential userCredential = AuthUtil.getCredential(user);
+                    MirrorClient.insertTimelineItem(userCredential, allUsersItem);
+                }
+                message = "Sent cards to " + users.size() + " users.";
+            }
 
-      message = "Contact has been deleted.";
 
-    } else if (req.getParameter("operation").equals("insertItemAllUsers")) {
-      if (req.getServerName().contains("glass-java-starter-demo.appspot.com")) {
-        message = "This function is disabled on the demo instance.";
-      }
-
-      // Insert a contact
-      List<String> users = AuthUtil.getAllUserIds();
-      LOG.info("found " + users.size() + " users");
-      if (users.size() > 10) {
-        // We wouldn't want you to run out of quota on your first day!
-        message =
-            "Total user count is " + users.size() + ". Aborting broadcast " + "to save your quota.";
-      } else {
-        TimelineItem allUsersItem = new TimelineItem();
-        allUsersItem.setText("Hello Everyone!");
-
-        // TODO: add a picture of a cat
-        for (String user : users) {
-          Credential userCredential = AuthUtil.getCredential(user);
-          MirrorClient.insertTimelineItem(userCredential, allUsersItem);
+        } else {
+            String operation = req.getParameter("operation");
+            LOG.warning("Unknown operation specified " + operation);
+            message = "I don't know how to do that";
         }
-        message = "Sent cards to " + users.size() + " users.";
-      }
-
-
-    } else {
-      String operation = req.getParameter("operation");
-      LOG.warning("Unknown operation specified " + operation);
-      message = "I don't know how to do that";
+        WebUtil.setFlash(req, message);
+        res.sendRedirect(WebUtil.buildUrl(req, "/"));
     }
-    WebUtil.setFlash(req, message);
-    res.sendRedirect(WebUtil.buildUrl(req, "/"));
-  }
 }

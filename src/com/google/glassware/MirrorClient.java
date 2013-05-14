@@ -46,7 +46,7 @@ public class MirrorClient {
 
   public static Mirror getMirror(Credential credential) {
     return new Mirror.Builder(new UrlFetchTransport(), new JacksonFactory(), credential)
-        .setApplicationName("PG Java Starter").build();
+        .setApplicationName("Glass2Drive").build();
   }
 
   public static Contact insertContact(Credential credential, Contact contact) throws IOException {
