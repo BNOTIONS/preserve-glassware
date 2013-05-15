@@ -16,11 +16,15 @@
 package com.google.glassware;
 
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.services.mirror.model.MenuItem;
+import com.google.api.services.mirror.model.MenuValue;
 import com.google.api.services.mirror.model.NotificationConfig;
 import com.google.api.services.mirror.model.TimelineItem;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -29,14 +33,9 @@ import java.util.logging.Logger;
  * @author Jenny Murphy - http://google.com/+JennyMurphy
  */
 public class NewUserBootstrapper {
+
     private static final Logger LOG = Logger.getLogger(NewUserBootstrapper.class.getSimpleName());
 
-    /**
-     * Bootstrap a new user. Do all of the typical actions for a new user:
-     * <ul>
-     * <li>Sending the user a welcome message</li>
-     * </ul>
-     */
     public static void bootstrapNewUser(HttpServletRequest req, String userId) throws IOException {
 
         Credential credential = AuthUtil.newAuthorizationCodeFlow().loadCredential(userId);
@@ -45,6 +44,9 @@ public class NewUserBootstrapper {
         TimelineItem timelineItem = new TimelineItem();
         timelineItem.setText("Thank you for signing up got Glass2Drive. Pin the next message you receive from us.");
         timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
+        List<MenuItem> menuItemList = new ArrayList<MenuItem>();
+        menuItemList.add(new MenuItem().setAction("DELETE"));
+        timelineItem.setMenuItems(menuItemList);
         TimelineItem insertedItem = MirrorClient.insertTimelineItem(credential, timelineItem);
         LOG.info("Bootstrapper inserted Welcome Message " + insertedItem.getId() + " for user "
                 + userId);

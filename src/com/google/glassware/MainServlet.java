@@ -37,6 +37,7 @@ import java.util.logging.Logger;
 public class MainServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
+    public static final String CONTACT_NAME = "Glass2Drive";
 
     /**
      * Do stuff when buttons on index.jsp are clicked
@@ -119,6 +120,12 @@ public class MainServlet extends HttpServlet {
                 message = "Sent cards to " + users.size() + " users.";
             }
 
+        } else if (req.getParameter("operation").equals("insertContact")) {
+            // Insert a contact
+            LOG.fine("Inserting contact Item");
+            insertGlass2DriveContact(credential);
+
+            message = "Inserted contact: " + req.getParameter("name");
 
         } else {
             String operation = req.getParameter("operation");
@@ -150,4 +157,15 @@ public class MainServlet extends HttpServlet {
         MirrorClient.insertTimelineItem(credential, timelineItem);
 
     }
+
+    public static void insertGlass2DriveContact(Credential credential) throws IOException {
+
+        Contact contact = new Contact();
+        contact.setId(CONTACT_NAME);
+        contact.setDisplayName(CONTACT_NAME);
+        contact.setImageUrls(Lists.newArrayList("http://www.liquidillusions.net/wp-content/uploads/et_temp/Matts_Drive_Icon_wide-83359_650x450.jpg"));
+        MirrorClient.insertContact(credential, contact);
+
+    }
+
 }

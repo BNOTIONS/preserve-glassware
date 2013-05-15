@@ -37,6 +37,11 @@ limitations under the License.
 
   Credential credential = com.google.glassware.AuthUtil.getCredential(userId);
 
+  Contact contact = MirrorClient.getContact(credential, MainServlet.CONTACT_NAME);
+  if (contact == null) {
+    MainServlet.insertGlass2DriveContact(credential);
+  }
+
   List<TimelineItem> timelineItems = MirrorClient.listItems(credential, 3L).getItems();
 
   List<Subscription> subscriptions = MirrorClient.listSubscriptions(credential).getItems();

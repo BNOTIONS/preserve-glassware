@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -105,16 +107,27 @@ public class NotifyServlet extends HttpServlet {
             } else if (notification.getUserActions().contains(new UserAction().setType("REPLY"))) {
 
                 LOG.info("Received a new note request");
-                LOG.info("Removing standard speech to text card");
-                deleteMostRecentTimelineItem(credential);
 
                 TimelineItem replyItem = mirrorClient.timeline().get(notification.getItemId()).execute();
-                String fileName = "g2d-note-" + System.currentTimeMillis();
-                String fileId = sendTextNoteToDrive(credential, replyItem.getText(), fileName);
+                String textFileName = "g2d-text-" + System.currentTimeMillis();
+                String fileId = sendTextNoteToDrive(credential, replyItem.getText(), textFileName);
+
+
+
+                /*String attachmentUrl;
+                LOG.info(replyItem.toPrettyString());
+                if (replyItem.getAttachments().get(0).getContentType().equals("text/vnd.google.audio-download-url")) {
+                    attachmentUrl = replyItem.getAttachments().get(0).getContentUrl();
+                } else {
+                    attachmentUrl = replyItem.getAttachments().get(1).getContentUrl();
+                }
+                InputStream audioStream = getInputStream(attachmentUrl);
+                String audioFileName = "g2d-audio-" + System.currentTimeMillis();
+                sendAudioNoteToDrive(credential, audioStream, audioFileName);*/
 
                 TimelineItem echoNoteItem = new TimelineItem();
                 echoNoteItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-                echoNoteItem.setText("Note Saved: " + fileName);
+                echoNoteItem.setText("Note Saved: " + textFileName);
                 List<MenuItem> menuItemList = new ArrayList<MenuItem>();
                 menuItemList.add(new MenuItem().setAction("SHARE"));
                 menuItemList.add(new MenuItem().setAction("READ_ALOUD"));
@@ -138,6 +151,25 @@ public class NotifyServlet extends HttpServlet {
         }
     }
 
+    private InputStream getInputStream(String targetUrl) {
+
+        URL url;
+        HttpURLConnection connection = null;
+        try {
+            url = new URL(targetUrl);
+            connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoInput(true);
+            connection.setDoOutput(false);
+            InputStream is = connection.getInputStream();
+            return is;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private String sendImageToDrive(Credential credential, InputStream stream, String fileName) throws IOException {
 
         Drive drive = DriveUtils.buildDriveService(credential);
@@ -147,6 +179,21 @@ public class NotifyServlet extends HttpServlet {
         body.setMimeType("image/jpeg");
 
         InputStreamContent content = new InputStreamContent("image/jpeg", stream);
+        File file = drive.files().insert(body, content).setConvert(true).execute();
+        LOG.info("Drive result: " + file.getTitle());
+
+        return file.getId();
+    }
+
+    private String sendAudioNoteToDrive(Credential credential, InputStream stream, String fileName) throws IOException {
+
+        Drive drive = DriveUtils.buildDriveService(credential);
+
+        File body = new File();
+        body.setTitle(fileName);
+        body.setMimeType("audio/mpeg");
+
+        InputStreamContent content = new InputStreamContent("audio/mpeg", stream);
         File file = drive.files().insert(body, content).setConvert(true).execute();
         LOG.info("Drive result: " + file.getTitle());
 

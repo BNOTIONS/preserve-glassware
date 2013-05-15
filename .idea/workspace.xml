@@ -5,14 +5,14 @@
     <ignored path="glass-java-starter-project.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AuthServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1366164437068" ignored="false" />
-    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368569360238" ignored="false" />
+    <file path="/NotifyServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368593756538" ignored="false" />
     <file path="/pom.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368428488180" ignored="false" />
     <file path="/appengine-web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368466409524" ignored="false" />
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
     <file path="/AuthorizeServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816368777" ignored="false" />
-    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570776498" ignored="false" />
-    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368568864311" ignored="false" />
-    <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368568885210" ignored="false" />
+    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368595957933" ignored="false" />
+    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368596071806" ignored="false" />
+    <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368590619697" ignored="false" />
     <file path="/DriveUtils.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570715898" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,15 +104,15 @@
         <option value="$PROJECT_DIR$/web/authorize.jsp" />
         <option value="$PROJECT_DIR$/src/com/skewable/servlet/AuthorizeServlet.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java" />
         <option value="$MAVEN_REPOSITORY$/com/google/apis/google-api-services-mirror/v1-rev2-1.14.1-beta/google-api-services-mirror-v1-rev2-1.14.1-beta.pom" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/AuthServlet.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/web/oauth.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MirrorClient.java" />
-        <option value="$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/DriveUtils.java" />
+        <option value="$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java" />
+        <option value="$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MainServlet.java" />
@@ -134,8 +134,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-10" />
     <option name="y" value="19" />
-    <option name="width" value="1100" />
-    <option name="height" value="1911" />
+    <option name="width" value="1940" />
+    <option name="height" value="1071" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -172,12 +172,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starter-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starter-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -234,16 +238,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starter-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starter-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -264,8 +264,8 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -321,6 +321,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -347,19 +360,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -499,7 +499,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="19" width="1100" height="1911" extended-state="6" />
+    <frame x="-10" y="19" width="1940" height="1071" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -514,7 +514,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30759802" sideWeight="0.2182681" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298484" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39989546" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18955512" sideWeight="0.6736959" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18943436" sideWeight="0.6736959" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3033033" sideWeight="0.8710191" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -590,11 +590,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/oauth.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="23" selection-start="188" selection-end="188" vertical-scroll-proportion="0.055976678" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="25" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.014101057">
@@ -620,20 +615,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/SignOutServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="13" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="13" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="60" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -668,37 +649,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="113" selection-start="1693" selection-end="1699" vertical-scroll-proportion="-22.36">
-          <folding>
-            <element signature="e#0#8182#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="34" column="13" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="42" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.52860546">
+        <state line="35" column="13" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="28" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0">
+        <state line="36" column="0" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.26027396">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="94" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.32876712">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="80" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.2283105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="41" selection-start="5774" selection-end="5774" vertical-scroll-proportion="0.7322372">
+        <state line="164" column="43" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.6333725">
           <folding>
-            <element signature="e#0#6256#0" expanded="true" />
+            <element signature="e#0#7029#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="89" selection-start="5821" selection-end="5821" vertical-scroll-proportion="1.2191781">
+          <folding>
+            <element signature="e#0#9901#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
