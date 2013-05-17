@@ -140,12 +140,12 @@ public class MainServlet extends HttpServlet {
     public static void insertPinCard(Credential credential) throws IOException {
 
         TimelineItem timelineItem = new TimelineItem();
-        timelineItem.setText("Glass2Drive");
+        timelineItem.setText("PRESERVE");
 
         List<MenuItem> menuItemList = new ArrayList<MenuItem>();
         // Built in actions
         List<MenuValue> textNoteValues = new ArrayList<MenuValue>();
-        textNoteValues.add(new MenuValue().setState("DEFAULT").setDisplayName("Text Note"));
+        textNoteValues.add(new MenuValue().setState("DEFAULT").setDisplayName("Voice Note"));
         menuItemList.add(new MenuItem().setAction("REPLY").setValues(textNoteValues));
         menuItemList.add(new MenuItem().setAction("TOGGLE_PINNED"));
         menuItemList.add(new MenuItem().setAction("DELETE"));
