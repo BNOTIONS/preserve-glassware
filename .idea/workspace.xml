@@ -10,10 +10,11 @@
     <file path="/appengine-web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368466409524" ignored="false" />
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
     <file path="/AuthorizeServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816368777" ignored="false" />
-    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368771896818" ignored="false" />
+    <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369110007276" ignored="false" />
     <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369106880156" ignored="false" />
     <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368590619697" ignored="false" />
     <file path="/DriveUtils.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570715898" ignored="false" />
+    <file path="/web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369109766757" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,26 +85,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NewUserBootstrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java">
+      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="27" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="86" column="0" selection-start="2888" selection-end="2888" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainServlet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
+      <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="27" selection-start="6739" selection-end="6739" vertical-scroll-proportion="0.60342854">
-              <folding>
-                <element signature="e#0#7860#0" expanded="true" />
-                <element signature="e#6791#6801#0" expanded="true" />
-                <element signature="e#6887#6898#0" expanded="true" />
-              </folding>
+            <state line="168" column="55" selection-start="5268" selection-end="5268" vertical-scroll-proportion="4.7435293">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,7 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/google/glassware/AuthFilter.java" />
         <option value="$PROJECT_DIR$/web/authorize.jsp" />
         <option value="$PROJECT_DIR$/src/com/skewable/servlet/AuthorizeServlet.java" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -139,8 +133,9 @@
         <option value="$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MainServlet.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
       </list>
     </option>
   </component>
@@ -236,6 +231,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -627,11 +640,6 @@
         <state line="17" column="26" selection-start="689" selection-end="689" vertical-scroll-proportion="0.23790087" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="43" selection-start="2321" selection-end="2321" vertical-scroll-proportion="0.7760933" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/google-api-client-1.15.0-rc.jar!/com/google/api/client/googleapis/services/AbstractGoogleClientRequest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="13" selection-start="4135" selection-end="4135" vertical-scroll-proportion="0.42840096" />
@@ -703,28 +711,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="40" selection-start="3438" selection-end="3438" vertical-scroll-proportion="0.3561644" />
+        <state line="39" column="62" selection-start="1414" selection-end="1414" vertical-scroll-proportion="0.33257142">
+          <folding>
+            <element signature="e#0#7809#0" expanded="true" />
+            <element signature="e#6781#6791#0" expanded="true" />
+            <element signature="e#6877#6888#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/NewUserBootstrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="27" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.0">
+        <state line="34" column="91" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.5485714">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="27" selection-start="6739" selection-end="6739" vertical-scroll-proportion="0.60342854">
-          <folding>
-            <element signature="e#0#7860#0" expanded="true" />
-            <element signature="e#6791#6801#0" expanded="true" />
-            <element signature="e#6887#6898#0" expanded="true" />
-          </folding>
+        <state line="86" column="0" selection-start="2888" selection-end="2888" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="55" selection-start="5268" selection-end="5268" vertical-scroll-proportion="4.7435293">
+          <folding />
         </state>
       </provider>
     </entry>

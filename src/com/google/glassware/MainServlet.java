@@ -37,7 +37,7 @@ import java.util.logging.Logger;
 public class MainServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
-    public static final String CONTACT_NAME = "Glass2Drive";
+    public static final String CONTACT_NAME = "Preserve";
 
     /**
      * Do stuff when buttons on index.jsp are clicked
@@ -156,7 +156,7 @@ public class MainServlet extends HttpServlet {
         TimelineItem timelineItem = new TimelineItem();
         timelineItem.setHtml("<article>\n  " +
                 "<figure>\n       " +
-                "<img src=\"http://www.skewable.com/picture_library/card_custom.png?sz=360\" >\n  " +
+                "<img src=\"http://www.skewable.com/picture_library/card.png?sz=360\" >\n  " +
                 "</figure>\n  " +
                 "<section>\n    " +
                 "<h1 class=\"text-large\">Preserve</h1>\n    " +
@@ -189,7 +189,7 @@ public class MainServlet extends HttpServlet {
         Contact contact = new Contact();
         contact.setId(CONTACT_NAME);
         contact.setDisplayName(CONTACT_NAME);
-        contact.setImageUrls(Lists.newArrayList("http://www.liquidillusions.net/wp-content/uploads/et_temp/Matts_Drive_Icon_wide-83359_650x450.jpg"));
+        contact.setImageUrls(Lists.newArrayList("http://www.skewable.com/picture_library/contact_card.png"));
         MirrorClient.insertContact(credential, contact);
 
     }

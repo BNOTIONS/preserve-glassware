@@ -142,7 +142,7 @@ limitations under the License.
     <div class="span4">
       <h2>Timeline</h2>
 
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
+      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
         <input type="hidden" name="operation" value="insertPinCard">
         <button class="btn" type="submit">Insert Pin Card</button>
       </form>
@@ -157,7 +157,7 @@ limitations under the License.
       <h2>Subscriptions</h2>
 
       <% if (timelineSubscriptionExists) { %>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>"
+      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>"
             method="post">
         <input type="hidden" name="subscriptionId" value="timeline">
         <input type="hidden" name="operation" value="deleteSubscription">
@@ -166,7 +166,7 @@ limitations under the License.
         </button>
       </form>
       <% } else { %>
-      <form action="<%= WebUtil.buildUrl(request, "/main") %>" method="post">
+      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
         <input type="hidden" name="operation" value="insertSubscription">
         <input type="hidden" name="collection" value="timeline">
         <button class="btn" type="submit">Subscribe to timeline updates</button>
