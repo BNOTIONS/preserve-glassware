@@ -136,11 +136,37 @@ public class MainServlet extends HttpServlet {
         res.sendRedirect(WebUtil.buildUrl(req, "/"));
     }
 
+    /*
+    {
+  "text": "\n\nHello Explorers,\n\nWelcome to Preserve!\n\n\n",
+  "creator": {
+  "displayName": "Project Glass",
+  "imageUrls": [
+  "http://www.skewable.com/picture_library/card_custom.png?sz=360"
+  ]
+  },
+  "notification": {
+  "level": "DEFAULT"
+  }
+}
+     */
 
     public static void insertPinCard(Credential credential) throws IOException {
 
         TimelineItem timelineItem = new TimelineItem();
-        timelineItem.setText("PRESERVE");
+        timelineItem.setHtml("<article>\n  " +
+                "<figure>\n       " +
+                "<img src=\"http://www.skewable.com/picture_library/card_custom.png?sz=360\" >\n  " +
+                "</figure>\n  " +
+                "<section>\n    " +
+                "<h1 class=\"text-large\">Preserve</h1>\n    " +
+                "<p class=\"text-x-small\">\n      " +
+                "Welcome, Explorers!\n    " +
+                "</p>\n    " +
+                "<hr>\n    " +
+                "<p class=\"text-x-small\">\n " +
+                "</section>\n" +
+                "</article>\n");
 
         List<MenuItem> menuItemList = new ArrayList<MenuItem>();
         // Built in actions
