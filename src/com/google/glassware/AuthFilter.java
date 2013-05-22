@@ -53,14 +53,14 @@ public class AuthFilter implements Filter {
       }
 
       // Are we in the middle of an auth flow? IF so skip check.
-      if (httpRequest.getRequestURI().equals("/oauth2callback")) {
+      if (httpRequest.getRequestURI().equals("/app/oauth2callback")) {
         LOG.info("Skipping auth check during auth flow");
         filterChain.doFilter(request, response);
         return;
       }
 
       // Is this a robot visit to the notify servlet? If so skip check
-      if (httpRequest.getRequestURI().equals("/notify")) {
+      if (httpRequest.getRequestURI().equals("/app/notify")) {
         LOG.info("Skipping auth check for notify servlet");
         filterChain.doFilter(request, response);
         return;
@@ -71,7 +71,7 @@ public class AuthFilter implements Filter {
           || AuthUtil.getCredential(AuthUtil.getUserId(httpRequest)) == null
           || AuthUtil.getCredential(AuthUtil.getUserId(httpRequest)).getAccessToken() == null) {
         // redirect to auth flow
-        httpResponse.sendRedirect(WebUtil.buildUrl(httpRequest, "/oauth2callback"));
+        httpResponse.sendRedirect(WebUtil.buildUrl(httpRequest, "/app/oauth2callback"));
         return;
       }
 
