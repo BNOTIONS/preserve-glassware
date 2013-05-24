@@ -81,8 +81,8 @@ limitations under the License.
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8" />
 <title>Preserve</title>
-<link rel="stylesheet" href="static/css/bootstrap.css"> 
 <link rel="stylesheet" href="static/css/main.css" type="text/css" />
+<link rel="stylesheet" href="static/css/bootstrap.css"> 
 <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
  
 <!--[if IE]>
@@ -94,7 +94,7 @@ limitations under the License.
 	<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
 </head>
 
-<body>
+<body bgcolor="#252525">
 <div class="container">
 
 	<div id="top">
@@ -103,16 +103,16 @@ limitations under the License.
 
 	</div>
 
-	<div id="bottom">
+	<div id="endlessbottom">
 
-		<div id="timeline">Your Files</div>
+		  <div id="timeline">Your Files</div>
 
     <% String flash = WebUtil.getClearFlash(request);
       if (flash != null) { %>
     <span class="label label-warning">Message: <%= flash %> </span>
     <% } %>
 
-    <div style="margin-top: 5px;">
+      <div style="margin-top: 5px;">
 
       <ol>
       <% if (notes != null) {
@@ -120,31 +120,23 @@ limitations under the License.
         <div id="links"><li><img src="static/images/ic_voice.png"><a href="<%= note.getWebViewLink() %>"><%= note.getTitle() %></a></li></div>
       <% }
       } %>
-    </div>
-    <div style="clear:both;"></div>
+      </div>
+
+        <div style="clear:both;"></div>
   </div>
 
 
-		
-
-		<div class="pin">
-
-		<form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
+		<form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post" class="pin">
         <input type="hidden" name="operation" value="insertPinCard">
         <INPUT TYPE="image" SRC="static/images/btn_pin.png" WIDTH="310"  HEIGHT="75" BORDER="0" ALT="Send Preserve Card">
         </form>
 
 			
-
-		</div>	
-
-		<div class="signout">
-
-			<form action="/signout" method="post">
+			<form action="/signout" method="post" class="signout">
           <INPUT TYPE="image" SRC="static/images/btn_signout.png" WIDTH="185"  HEIGHT="75" BORDER="0" ALT="Signout">
         </form>
 
-		</div>	
+		
 
 	</div>
 
