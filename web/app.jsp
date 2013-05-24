@@ -131,12 +131,7 @@ limitations under the License.
 
 
 
-		  <div id="timeline">Your Files</div>
-
-    <% String flash = WebUtil.getClearFlash(request);
-      if (flash != null) { %>
-    <span class="label label-warning">Message: <%= flash %> </span>
-    <% } %>
+	<div id="timeline">Your Files</div>
 
       <div style="margin-top: 5px;">
 
