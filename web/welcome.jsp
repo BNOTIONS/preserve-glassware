@@ -22,7 +22,7 @@
 
 	<div class="header">
 
-		<div class="signin"><a href="http://glass2drive.appspot.com/app"><img src="static/images/btn_sign_in.png" width="244" height="39"></a></div>
+		<div class="signin"><a href="http://preserve-app.appspot.com/app"><img src="static/images/btn_sign_in.png" width="244" height="39"></a></div>
 
 	</div>
 

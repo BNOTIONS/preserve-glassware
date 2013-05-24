@@ -109,7 +109,7 @@ public class NotifyServlet extends HttpServlet {
                         "<img src=\"http://www.skewable.com/picture_library/note_saved_bg.png\" width=\"100%\" height=\"100%\">\n  " +
                         "<div class=\"photo-overlay\"/>\n  " +
                         "<section>\n    " +
-                        "<p class=\"text-auto-size\">foobar</p>\n  " +
+                        "<p class=\"text-auto-size\">" + fileName + "</p>\n  " +
                         "</section>\n  " +
                         "<footer>\n    " +
                         "<img src=\"http://skewable.com/preserve/app_icon.png\" class=\"left\">\n    " +
@@ -147,10 +147,10 @@ public class NotifyServlet extends HttpServlet {
                 TimelineItem echoNoteItem = new TimelineItem();
                 echoNoteItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
                 echoNoteItem.setHtml("<article class=\"photo\">\n  " +
-                        "<img src=\"http://www.skewable.com/picture_library/note_saved_bg.png\" width=\"100%\" height=\"100%\">\n  " +
+                        "<img src=\"http://skewable.com/preserve/note_saved_bg.png\" width=\"100%\" height=\"100%\">\n  " +
                         "<div class=\"photo-overlay\"/>\n  " +
                         "<section>\n    " +
-                        "<p class=\"text-auto-size\">foobar</p>\n  " +
+                        "<p class=\"text-auto-size\">" + textFileName + "</p>\n  " +
                         "</section>\n  " +
                         "<footer>\n    " +
                         "<img src=\"http://skewable.com/preserve/app_icon.png\" class=\"left\">\n    " +

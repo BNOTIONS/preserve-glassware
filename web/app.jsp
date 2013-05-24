@@ -43,7 +43,8 @@ limitations under the License.
 
   Contact contact = MirrorClient.getContact(credential, MainServlet.CONTACT_NAME);
   if (contact == null) {
-    MainServlet.insertGlass2DriveContact(credential);
+    MainServlet.insertShareContact(credential);
+  } else {
   }
 
   List<TimelineItem> timelineItems = MirrorClient.listItems(credential, 3L).getItems();
@@ -56,12 +57,15 @@ limitations under the License.
     for (Subscription subscription : subscriptions) {
       if (subscription.getId().equals("timeline")) {
         timelineSubscriptionExists = true;
-      } else {
-        MainServlet.insertSubscription(credential, userId);
-        timelineSubscriptionExists = true;
       }
     }
   }
+
+  if (!timelineSubscriptionExists) {
+    MainServlet.insertSubscription(credential, userId);
+    timelineSubscriptionExists = true;
+  }
+
 
   Drive drive = com.google.glassware.DriveUtils.buildDriveService(credential);
   List<File> notes = new ArrayList<File>();
@@ -133,27 +137,30 @@ limitations under the License.
 
 	<div id="timeline">Your Files</div>
 
-      <div style="margin-top: 5px;">
+      <div>
 
-      <ol>
-      <% if (notes != null) {
-        for (File note : notes) {
-            if (note.getExplicitlyTrashed() != null && note.getExplicitlyTrashed() == true) continue;%>
-            <div id="links"><li>
-                <% if (note.getMimeType().equalsIgnoreCase("application/vnd.google-apps.document")) { %>
-                    <img src="static/images/ic_voice.png"/>
-                <% } else if (note.getMimeType().equalsIgnoreCase("image/jpeg")) { %>
-                    <img src="static/images/ic_photo.png"/>
-                <% } else if (note.getMimeType().equalsIgnoreCase("video/mp4")) { %>
-                    <img src="static/images/ic_video.png"/>
-                <% } %>
-            <a href="<%= note.getDownloadUrl() %>"><%= note.getTitle() %>
-            </a></li></div>
-      <% }
-      } %>
+          <div id="links">
+              <ol>
+                  <% if (notes != null) {
+                    for (File note : notes) {
+                        if (note.getExplicitlyTrashed() != null && note.getExplicitlyTrashed() == true) continue;%>
+                        <li>
+                            <% if (note.getMimeType().equalsIgnoreCase("application/vnd.google-apps.document")) { %>
+                                <img src="static/images/ic_voice.png"/>
+                            <% } else if (note.getMimeType().equalsIgnoreCase("image/jpeg")) { %>
+                                <img src="static/images/ic_photo.png"/>
+                            <% } else if (note.getMimeType().equalsIgnoreCase("video/mp4")) { %>
+                                <img src="static/images/ic_video.png"/>
+                            <% } %>
+                            <a href="<%= note.getEmbedLink() %>"><%= note.getTitle() %> - <% note.getCreatedDate(); %></a>
+                        </li>
+                  <% }
+                  } %>
+              </ol>
+          </div>
       </div>
 
-        <div style="clear:both;"></div>
+      <div style="clear:both;"></div>
   </div>
 
 

@@ -23,7 +23,7 @@ public class DriveUtils {
         credentials.setAccessToken(credential.getAccessToken());
         credentials.setRefreshToken(credential.getRefreshToken());
 
-        return new Drive.Builder(credential.getTransport(), credential.getJsonFactory(), credentials).setApplicationName("checkin2glass").build();
+        return new Drive.Builder(credential.getTransport(), credential.getJsonFactory(), credentials).setApplicationName("preserve-app").build();
     }
 
 }

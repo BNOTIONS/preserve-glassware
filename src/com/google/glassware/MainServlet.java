@@ -84,15 +84,12 @@ public class MainServlet extends HttpServlet {
             message = "A timeline item has been inserted.";
 
         } else if (req.getParameter("operation").equals("insertPinCard")) {
-            LOG.fine("Inserting Timeline Item");
+            LOG.fine("Inserting Pin Card");
             insertPinCard(credential);
 
             message = "A timeline item with actions has been inserted.";
 
         } else if (req.getParameter("operation").equals("insertItemAllUsers")) {
-            if (req.getServerName().contains("glass-java-starter-demo.appspot.com")) {
-                message = "This function is disabled on the demo instance.";
-            }
 
             List<String> users = AuthUtil.getAllUserIds();
             LOG.info("found " + users.size() + " users");
@@ -115,7 +112,7 @@ public class MainServlet extends HttpServlet {
         } else if (req.getParameter("operation").equals("insertContact")) {
             // Insert a contact
             LOG.fine("Inserting contact Item");
-            insertGlass2DriveContact(credential);
+            insertShareContact(credential);
 
             message = "Inserted contact: " + req.getParameter("name");
 
@@ -146,7 +143,7 @@ public class MainServlet extends HttpServlet {
     public static void insertSubscription(Credential credential, String userId) throws IOException {
 
         try {
-            MirrorClient.insertSubscription(credential, "http://glass2drive.appspot.com/app/notify", userId, "timeline");
+            MirrorClient.insertSubscription(credential, "https://preserve-app.appspot.com/app/notify", userId, "timeline");
         } catch (GoogleJsonResponseException e) {
             e.printStackTrace();
         }
@@ -192,7 +189,7 @@ public class MainServlet extends HttpServlet {
 
     }
 
-    public static void insertGlass2DriveContact(Credential credential) throws IOException {
+    public static void insertShareContact(Credential credential) throws IOException {
 
         Contact contact = new Contact();
         contact.setId(CONTACT_NAME);
