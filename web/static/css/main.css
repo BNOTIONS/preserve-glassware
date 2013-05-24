@@ -67,7 +67,7 @@ body {
     font-style: Strong;
     color: #FFFFFF;
     font-size: 48px;
-    top: 35px;
+    top: -45px;
     position: relative;
     text-align: left;
     left: 75px;
@@ -135,7 +135,7 @@ body {
     width: 310px;
     position: relative;
     left: 475px;
-    top: -25px;
+    top: -5px;
 
 }
 
@@ -145,6 +145,6 @@ body {
     width: 185px;
     position: relative;
     left: 925px;
-    top: -100px;
+    top: -80px;
 
 }
