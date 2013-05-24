@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-  ﻿"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee"
          version="2.5">
     <!--
     Copyright (C) 2013 Google Inc.
@@ -78,7 +77,7 @@
 
     <servlet>
         <servlet-name>welcome</servlet-name>
-        <jsp-file>welcome.jsp</jsp-file>
+        <jsp-file>/welcome.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>welcome</servlet-name>
@@ -87,7 +86,7 @@
 
     <servlet>
         <servlet-name>app</servlet-name>
-        <jsp-file>app.jsp</jsp-file>
+        <jsp-file>/app.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>app</servlet-name>

@@ -52,7 +52,7 @@ public class AuthServlet extends HttpServlet {
             AuthorizationCodeFlow flow = AuthUtil.newAuthorizationCodeFlow();
             TokenResponse tokenResponse =
                     flow.newTokenRequest(req.getParameter("code"))
-                            .setRedirectUri(WebUtil.buildUrl(req, "/oauth2callback")).execute();
+                            .setRedirectUri(WebUtil.buildUrl(req, "/app/oauth2callback")).execute();
 
             // Extract the Google User ID from the ID token in the auth response
             String userId = ((GoogleTokenResponse) tokenResponse).parseIdToken().getPayload().getUserId();
@@ -76,7 +76,7 @@ public class AuthServlet extends HttpServlet {
 
         AuthorizationCodeFlow flow = AuthUtil.newAuthorizationCodeFlow();
         GenericUrl url =
-                flow.newAuthorizationUrl().setRedirectUri(WebUtil.buildUrl(req, "/oauth2callback"));
+                flow.newAuthorizationUrl().setRedirectUri(WebUtil.buildUrl(req, "/app/oauth2callback"));
         url.set("approval_prompt", "force");
         res.sendRedirect(url.build());
     }

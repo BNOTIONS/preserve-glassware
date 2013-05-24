@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * Handles POST requests from index.jsp
+ * Handles POST requests from app.jsp
  *
  * @author Jenny Murphy - http://google.com/+JennyMurphy
  */
@@ -40,7 +40,7 @@ public class MainServlet extends HttpServlet {
     public static final String CONTACT_NAME = "Preserve";
 
     /**
-     * Do stuff when buttons on index.jsp are clicked
+     * Do stuff when buttons on app.jsp are clicked
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -53,11 +53,11 @@ public class MainServlet extends HttpServlet {
 
             // subscribe (only works deployed to production)
             try {
-                MirrorClient.insertSubscription(credential, WebUtil.buildUrl(req, "/notify"), userId,
+                MirrorClient.insertSubscription(credential, WebUtil.buildUrl(req, "/app/notify"), userId,
                         req.getParameter("collection"));
                 message = "Application is now subscribed to updates.";
             } catch (GoogleJsonResponseException e) {
-                LOG.warning("Could not subscribe " + WebUtil.buildUrl(req, "/notify") + " because "
+                LOG.warning("Could not subscribe " + WebUtil.buildUrl(req, "/app/notify") + " because "
                         + e.getDetails().toPrettyString());
                 message = "Failed to subscribe. Check your log for details";
             }
