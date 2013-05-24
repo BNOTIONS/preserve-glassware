@@ -76,50 +76,37 @@ limitations under the License.
 
 
 %>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRESERVE</title>
-  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"
-        media="screen">
-
-  <style>
-    .button-icon {
-      max-width: 75px;
-    }
-
-    .tile {
-      border-left: 1px solid #444;
-      padding: 5px;
-      list-style: none;
-    }
-
-    .btn {
-      width: 100%;
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<title>Preserve</title>
+<link rel="stylesheet" href="static/css/bootstrap.css"> 
+<link rel="stylesheet" href="static/css/main.css" type="text/css" />
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+ 
+<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if lte IE 7]>
+	<script src="js/IE8.js" type="text/javascript"></script><![endif]-->
+<!--[if lt IE 7]>
+ 
+	<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
 </head>
+
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="#">PRESERVE</a>
-
-      <div class="nav-collapse collapse">
-        <form class="navbar-form pull-right" action="/signout" method="post">
-          <button type="submit" class="btn">Sign out</button>
-        </form>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </div>
-</div>
-
 <div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
-  <div class="hero-unit">
-    <h1>Your Recent Timeline</h1>
+	<div id="top">
+
+		<div class="header"></div>
+
+	</div>
+
+	<div id="bottom">
+
+		<div id="timeline">Your Files</div>
+
     <% String flash = WebUtil.getClearFlash(request);
       if (flash != null) { %>
     <span class="label label-warning">Message: <%= flash %> </span>
@@ -130,55 +117,36 @@ limitations under the License.
       <ol>
       <% if (notes != null) {
         for (File note : notes) { %>
-        <li><a href="<%= note.getWebViewLink() %>"><%= note.getTitle() %></a></li>
+        <div id="links"><li><img src="static/images/ic_voice.png"><a href="<%= note.getWebViewLink() %>"><%= note.getTitle() %></a></li></div>
       <% }
       } %>
     </div>
     <div style="clear:both;"></div>
   </div>
 
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="span4">
-      <h2>Timeline</h2>
 
-      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
+		
+
+		<div class="pin">
+
+		<form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
         <input type="hidden" name="operation" value="insertPinCard">
-        <button class="btn" type="submit">Insert Pin Card</button>
-      </form>
+        <INPUT TYPE="image" SRC="static/images/btn_pin.png" WIDTH="310"  HEIGHT="75" BORDER="0" ALT="Send Preserve Card">
+        </form>
 
-    </div>
+			
 
-    <div class="span4">
-      <h2>Contacts</h2>
-    </div>
+		</div>	
 
-    <div class="span4">
-      <h2>Subscriptions</h2>
+		<div class="signout">
 
-      <% if (timelineSubscriptionExists) { %>
-      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>"
-            method="post">
-        <input type="hidden" name="subscriptionId" value="timeline">
-        <input type="hidden" name="operation" value="deleteSubscription">
-        <button class="btn" type="submit" class="delete">Unsubscribe from
-          timeline updates
-        </button>
-      </form>
-      <% } else { %>
-      <form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
-        <input type="hidden" name="operation" value="insertSubscription">
-        <input type="hidden" name="collection" value="timeline">
-        <button class="btn" type="submit">Subscribe to timeline updates</button>
-      </form>
-      <% }%>
+			<form action="/signout" method="post">
+          <INPUT TYPE="image" SRC="static/images/btn_signout.png" WIDTH="185"  HEIGHT="75" BORDER="0" ALT="Signout">
+        </form>
 
-    </div>
-  </div>
-</div>
+		</div>	
 
-<script
-    src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	</div>
+
 </body>
 </html>

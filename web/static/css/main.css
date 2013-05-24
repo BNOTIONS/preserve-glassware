@@ -37,12 +37,49 @@ body {
 
 }
 
+.header2 {
+
+    background: url(../images/header2.jpg);
+    height: 845px;
+    width: 1175px;
+    position: absolute;
+    background-repeat:no-repeat;
+    top: 0px;
+    margin: 0px;
+
+}
+
 #font {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: Normal;
     color: #FFFFFF;
     font-size: 16px;
     top: 10px;
+    position: relative;
+    text-align: left;
+    left: 75px;
+    width: 1050px;
+}
+
+#timeline {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: Normal;
+    font-style: Strong;
+    color: #FFFFFF;
+    font-size: 48px;
+    top: 35px;
+    position: relative;
+    text-align: left;
+    left: 75px;
+    width: 1050px;
+}
+
+#links {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: Normal;
+    color: #FFFFFF;
+    font-size: 28px;
+    top: 125px;
     position: relative;
     text-align: left;
     left: 75px;
@@ -79,5 +116,25 @@ body {
     left: 155px;
     top: 275px;
 
+
+}
+
+.pin {
+
+    height: 75px;
+    width: 310px;
+    position: relative;
+    left: 475px;
+    top: -25px;
+
+}
+
+.signout {
+
+    height: 75px;
+    width: 185px;
+    position: relative;
+    left: 925px;
+    top: -100px;
 
 }
