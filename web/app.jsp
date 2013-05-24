@@ -105,6 +105,25 @@ limitations under the License.
 
 	<div id="endlessbottom">
 
+    <div class="pin">
+
+    <form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post">
+        <input type="hidden" name="operation" value="insertPinCard">
+        <INPUT TYPE="image" SRC="static/images/btn_pin.png" WIDTH="310"  HEIGHT="75" BORDER="0" ALT="Send Preserve Card">
+        </form>
+
+    </div>
+
+    <div class="signout">
+      
+      <form action="/signout" method="post">
+          <INPUT TYPE="image" SRC="static/images/btn_signout.png" WIDTH="185"  HEIGHT="75" BORDER="0" ALT="Signout">
+      </form>
+
+    </div>
+
+
+
 		  <div id="timeline">Your Files</div>
 
     <% String flash = WebUtil.getClearFlash(request);
@@ -126,15 +145,7 @@ limitations under the License.
   </div>
 
 
-		<form action="<%= WebUtil.buildUrl(request, "/app/main") %>" method="post" class="pin">
-        <input type="hidden" name="operation" value="insertPinCard">
-        <INPUT TYPE="image" SRC="static/images/btn_pin.png" WIDTH="310"  HEIGHT="75" BORDER="0" ALT="Send Preserve Card">
-        </form>
-
-			
-			<form action="/signout" method="post" class="signout">
-          <INPUT TYPE="image" SRC="static/images/btn_signout.png" WIDTH="185"  HEIGHT="75" BORDER="0" ALT="Signout">
-        </form>
+		
 
 		
 
