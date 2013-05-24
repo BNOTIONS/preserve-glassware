@@ -42,8 +42,6 @@ limitations under the License.
   Credential credential = com.google.glassware.AuthUtil.getCredential(userId);
 
   Contact contact = MirrorClient.getContact(credential, MainServlet.CONTACT_NAME);
-  MainServlet.removeContact(credential, contact.getId());
-  contact = null;
   if (contact == null) {
     MainServlet.insertGlass2DriveContact(credential);
   }
@@ -56,10 +54,11 @@ limitations under the License.
 
   if (subscriptions != null) {
     for (Subscription subscription : subscriptions) {
-      if (!subscription.getId().equals("timeline")) {
-        timelineSubscriptionExists = false;
-      } else {
+      if (subscription.getId().equals("timeline") && subscription.getCallbackUrl().contains("/app/notify")) {
         timelineSubscriptionExists = true;
+      } else {
+        MainServlet.insertSubscription(credential, userId);
+        timelineSubscriptionExists = false;
       }
     }
   }
@@ -142,18 +141,17 @@ limitations under the License.
       <ol>
       <% if (notes != null) {
         for (File note : notes) {
-        LOG.info("Mime Type: " + note.getMimeType());
-        if (note.getExplicitlyTrashed() != null && note.getExplicitlyTrashed() == true) continue;%>
-        <div id="links"><li>
-            <% if (note.getMimeType().equalsIgnoreCase("application/vnd.google-apps.document")) { %>
-                <img src="static/images/ic_voice.png"/>
-            <% } else if (note.getMimeType().equalsIgnoreCase("image/jpeg")) { %>
-                <img src="static/images/ic_photo.png"/>
-            <% } else if (note.getMimeType().equalsIgnoreCase("video/mp4")) { %>
-                <img src="static/images/ic_video.png"/>
-            <% } %>
-        <a href="<%= note.getWebContentLink() %>"><%= note.getTitle() %>
-        </a></li></div>
+            if (note.getExplicitlyTrashed() != null && note.getExplicitlyTrashed() == true) continue;%>
+            <div id="links"><li>
+                <% if (note.getMimeType().equalsIgnoreCase("application/vnd.google-apps.document")) { %>
+                    <img src="static/images/ic_voice.png"/>
+                <% } else if (note.getMimeType().equalsIgnoreCase("image/jpeg")) { %>
+                    <img src="static/images/ic_photo.png"/>
+                <% } else if (note.getMimeType().equalsIgnoreCase("video/mp4")) { %>
+                    <img src="static/images/ic_video.png"/>
+                <% } %>
+            <a href="<%= note.getDownloadUrl() %>"><%= note.getTitle() %>
+            </a></li></div>
       <% }
       } %>
       </div>

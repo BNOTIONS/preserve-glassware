@@ -11,11 +11,11 @@
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
     <file path="/AuthorizeServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816368777" ignored="false" />
     <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369110007276" ignored="false" />
-    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369372243043" ignored="false" />
+    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369373186724" ignored="false" />
     <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368590619697" ignored="false" />
     <file path="/DriveUtils.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570715898" ignored="false" />
     <file path="/web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254330572" ignored="false" />
-    <file path="/app.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369372259610" ignored="false" />
+    <file path="/app.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369373282864" ignored="false" />
     <file path="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254795972" ignored="false" />
     <file path="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254795972" ignored="false" />
     <file path="/a.dummy" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369255484748" ignored="false" />
@@ -91,7 +91,35 @@
     <favorites_list name="glass2drive" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="app.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/app.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="59" selection-start="2480" selection-end="2480" vertical-scroll-proportion="-1.5753424">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="92" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/glassware/WebUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="23" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -108,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$MAVEN_REPOSITORY$/com/google/apis/google-api-services-mirror/v1-rev2-1.14.1-beta/google-api-services-mirror-v1-rev2-1.14.1-beta.pom" />
         <option value="$PROJECT_DIR$/web/oauth.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MirrorClient.java" />
@@ -122,6 +149,7 @@
         <option value="$PROJECT_DIR$/web/welcome.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/NotifyServlet.java" />
+        <option value="$PROJECT_DIR$/web/static/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/src/com/google/glassware/MainServlet.java" />
         <option value="$PROJECT_DIR$/web/app.jsp" />
       </list>
@@ -226,6 +254,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -249,6 +295,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="glass2drive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -549,7 +643,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="19" width="1940" height="1071" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -563,7 +657,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30759802" sideWeight="0.2182681" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298484" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39989546" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18890075" sideWeight="0.64705884" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18890075" sideWeight="0.64705884" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3033033" sideWeight="0.8710191" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -644,20 +738,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/SignOutServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="53" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/WebUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="13" selection-start="840" selection-end="840" vertical-scroll-proportion="0.21942857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/DriveUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="33" selection-start="436" selection-end="436" vertical-scroll-proportion="0.384">
@@ -665,11 +745,6 @@
             <element signature="imports" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="26" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.33213645" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java">
@@ -741,16 +816,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="229" column="27" selection-start="3339" selection-end="3339" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="26" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.3321918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/WebUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="23" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="31" selection-start="7543" selection-end="7543" vertical-scroll-proportion="0.0">
+        <state line="59" column="92" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="17" selection-start="1930" selection-end="1930" vertical-scroll-proportion="0.41095892">
+        <state line="59" column="59" selection-start="2480" selection-end="2480" vertical-scroll-proportion="-1.5753424">
           <folding />
         </state>
       </provider>

@@ -52,15 +52,7 @@ public class MainServlet extends HttpServlet {
         if (req.getParameter("operation").equals("insertSubscription")) {
 
             // subscribe (only works deployed to production)
-            try {
-                MirrorClient.insertSubscription(credential, WebUtil.buildUrl(req, "/app/notify"), userId,
-                        req.getParameter("collection"));
-                message = "Application is now subscribed to updates.";
-            } catch (GoogleJsonResponseException e) {
-                LOG.warning("Could not subscribe " + WebUtil.buildUrl(req, "/app/notify") + " because "
-                        + e.getDetails().toPrettyString());
-                message = "Failed to subscribe. Check your log for details";
-            }
+            insertSubscription(credential, userId);
 
         } else if (req.getParameter("operation").equals("deleteSubscription")) {
 
@@ -150,6 +142,16 @@ public class MainServlet extends HttpServlet {
   }
 }
      */
+
+    public static void insertSubscription(Credential credential, String userId) throws IOException {
+
+        try {
+            MirrorClient.insertSubscription(credential, "http://glass2drive.appspot.com/app/notify", userId, "timeline");
+        } catch (GoogleJsonResponseException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public static void insertPinCard(Credential credential) throws IOException {
 
