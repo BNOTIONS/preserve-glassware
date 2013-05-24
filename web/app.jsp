@@ -87,8 +87,7 @@ limitations under the License.
 <meta charset="utf-8" />
 <title>Preserve</title>
 <link rel="stylesheet" href="static/css/main.css" type="text/css" />
-<link rel="stylesheet" href="static/css/bootstrap.css"> 
-<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+
  
 <!--[if IE]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -99,8 +98,8 @@ limitations under the License.
 	<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
 </head>
 
-<body bgcolor="#252525">
-<div class="container">
+<body>
+
 
 	<div id="top">
 
@@ -164,7 +163,7 @@ limitations under the License.
 
 		
 
-	</div>
+
 
 </body>
 </html>
