@@ -4,12 +4,19 @@ body {
     padding: 0em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5em;
-    background-color: #131313;
+    background-color: #252525;
+}
+
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 1175px;
 }
 
 #top {
 
-    background-color: #131313;
+    background-color: #000000;
     background-position:center bottom;
     background-repeat:no-repeat;
     height: 470px;
@@ -22,7 +29,7 @@ body {
 
     background: url(../images/header.jpg);
     height: 845px;
-    width: 1645px;
+    width: 1175px;
     position: absolute;
     background-repeat:no-repeat;
     top: 0px;
@@ -35,16 +42,16 @@ body {
     font-weight: Normal;
     color: #FFFFFF;
     font-size: 16px;
-    top: 1150px;
-    position: absolute;
+    top: 10px;
+    position: relative;
     text-align: left;
-    left: 325px;
+    left: 75px;
     width: 1050px;
 }
 
 #bottom {
 
-    background-color: #000000;
+    background-color: #252525;
     background-position:center bottom;
     background-repeat:no-repeat;
     height: 1000px;
@@ -54,13 +61,13 @@ body {
 
 #center {
 
-    position: absolute;
-    left: 250px;
+    position: relative;
+    left: 0px;
     right: 0;
     background: url(../images/center.jpg);
-    height: 675px;
+    height: 635px;
     width: 1175px;
-    top: 470px;
+    top: -10px;
 
 }
 
@@ -69,8 +76,8 @@ body {
     height: 39px;
     width: 244px;
     position: absolute;
-    left: 325px;
-    top: 300px;
+    left: 155px;
+    top: 275px;
 
 
 }

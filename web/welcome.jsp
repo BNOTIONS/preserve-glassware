@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Preserve</title>
+<link rel="stylesheet" href="static/css/bootstrap.css">  
 <link rel="stylesheet" href="static/css/main.css" type="text/css" />
  
 <!--[if IE]>
@@ -13,8 +14,9 @@
  
 	<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
 </head>
- <center>
+
 <body>
+<div class="container">
 
 <div id="top">
 
@@ -32,7 +34,7 @@
 
 
 		<div id="font">
-Why Preserve? <br><br>
+Why Preserve?<br><br>
 
 People need a way to quickly take notes while on the go or when they are unable to use their hands to type. So Preserve can make quick notes with a single tap on Glass and the beautiful sound of your voice. When people want to take a visual note, such as a whiteboard, we allow you upload directly to Google Drive. Google will automatically index the text in your images and allow you to search them later using keywords from the captured image. 
 
@@ -46,7 +48,7 @@ Authorize with our Glassware service by clicking the Login button and pin the Pr
 
 
 </div>
+</div>
 
 </body>
-</center>
 </html>
