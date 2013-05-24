@@ -19,6 +19,7 @@ limitations under the License.
 <%@ page import="com.google.glassware.WebUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.logging.Logger" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="com.google.api.services.mirror.model.TimelineItem" %>
 <%@ page import="com.google.api.services.mirror.model.Subscription" %>
@@ -32,12 +33,17 @@ limitations under the License.
 
 <!doctype html>
 <%
+
+  Logger LOG = Logger.getLogger(MainServlet.class.getSimpleName());
+
   String userId = com.google.glassware.AuthUtil.getUserId(request);
   String appBaseUrl = WebUtil.buildUrl(request, "/");
 
   Credential credential = com.google.glassware.AuthUtil.getCredential(userId);
 
   Contact contact = MirrorClient.getContact(credential, MainServlet.CONTACT_NAME);
+  MainServlet.removeContact(credential, contact.getId());
+  contact = null;
   if (contact == null) {
     MainServlet.insertGlass2DriveContact(credential);
   }
@@ -116,8 +122,19 @@ limitations under the License.
 
       <ol>
       <% if (notes != null) {
-        for (File note : notes) { %>
-        <div id="links"><li><img src="static/images/ic_voice.png"><a href="<%= note.getWebViewLink() %>"><%= note.getTitle() %></a></li></div>
+        for (File note : notes) {
+        LOG.info("Mime Type: " + note.getMimeType());
+        if (note.getExplicitlyTrashed() != null && note.getExplicitlyTrashed() == true) continue;%>
+        <div id="links"><li>
+            <% if (note.getMimeType().equalsIgnoreCase("application/vnd.google-apps.document")) { %>
+                <img src="static/images/ic_voice.png"/>
+            <% } else if (note.getMimeType().equalsIgnoreCase("image/jpeg")) { %>
+                <img src="static/images/ic_photo.png"/>
+            <% } else if (note.getMimeType().equalsIgnoreCase("video/mp4")) { %>
+                <img src="static/images/ic_video.png"/>
+            <% } %>
+        <a href="<%= note.getWebContentLink() %>"><%= note.getTitle() %>
+        </a></li></div>
       <% }
       } %>
     </div>

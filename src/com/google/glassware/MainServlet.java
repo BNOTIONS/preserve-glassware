@@ -194,4 +194,10 @@ public class MainServlet extends HttpServlet {
 
     }
 
+    public static void removeContact(Credential credential, String id) throws IOException {
+
+        MirrorClient.deleteContact(credential, id);
+
+    }
+
 }
