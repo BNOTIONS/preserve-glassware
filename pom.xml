@@ -18,7 +18,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.google</groupId>
-    <artifactId>glass-java-starter</artifactId>
+    <artifactId>preserve</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <repositories>

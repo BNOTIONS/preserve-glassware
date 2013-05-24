@@ -84,19 +84,38 @@ public class NotifyServlet extends HttpServlet {
 
             if (notification.getUserActions().contains(new UserAction().setType("SHARE"))
                     && timelineItem.getAttachments() != null && timelineItem.getAttachments().size() > 0) {
-                LOG.info("It was a share of a photo.");
+                LOG.info("Received a share request.");
 
                 String attachmentId = timelineItem.getAttachments().get(0).getId();
                 LOG.info("Found attachment with ID " + attachmentId);
 
                 InputStream driveStream = MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
-                String fileName = "g2d-image-" + System.currentTimeMillis();
-                String fileId = sendImageToDrive(credential, driveStream, fileName);
+
+                String contentType = timelineItem.getAttachments().get(0).getContentType();
+                String fileId;
+                String fileName;
+                if (contentType.equalsIgnoreCase("video/mp4")) {
+                    fileName = "g2d-video-" + System.currentTimeMillis() + ".mp4";
+                    fileId = sendVideoToDrive(credential, driveStream, fileName);
+                } else {
+                    fileName = "g2d-image-" + System.currentTimeMillis() + ".jpg";
+                    fileId = sendImageToDrive(credential, driveStream, fileName);
+                }
 
                 InputStream timelineStream = MirrorClient.getAttachmentInputStream(credential, timelineItem.getId(), attachmentId);
                 TimelineItem echoPhotoItem = new TimelineItem();
                 echoPhotoItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-                echoPhotoItem.setText("Image Saved: " + fileName);
+                echoPhotoItem.setHtml("<article class=\"photo\">\n  " +
+                        "<img src=\"http://www.skewable.com/picture_library/note_saved_bg.png\" width=\"100%\" height=\"100%\">\n  " +
+                        "<div class=\"photo-overlay\"/>\n  " +
+                        "<section>\n    " +
+                        "<p class=\"text-auto-size\">foobar</p>\n  " +
+                        "</section>\n  " +
+                        "<footer>\n    " +
+                        "<img src=\"http://skewable.com/preserve/app_icon.png\" class=\"left\">\n    " +
+                        "<p>Preserve</p>\n  " +
+                        "</footer>\n" +
+                        "</article>\n");
                 echoPhotoItem.setSourceItemId(fileId);
                 List<MenuItem> menuItemList = new ArrayList<MenuItem>();
                 menuItemList.add(new MenuItem().setAction("SHARE"));
@@ -109,7 +128,7 @@ public class NotifyServlet extends HttpServlet {
                 LOG.info("Received a new note request");
 
                 TimelineItem replyItem = mirrorClient.timeline().get(notification.getItemId()).execute();
-                String textFileName = "g2d-text-" + System.currentTimeMillis();
+                String textFileName = "g2d-text-" + System.currentTimeMillis() + ".txt";
                 String fileId = sendTextNoteToDrive(credential, replyItem.getText(), textFileName);
 
 
@@ -127,7 +146,17 @@ public class NotifyServlet extends HttpServlet {
 
                 TimelineItem echoNoteItem = new TimelineItem();
                 echoNoteItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
-                echoNoteItem.setText("Note Saved: " + textFileName);
+                echoNoteItem.setHtml("<article class=\"photo\">\n  " +
+                        "<img src=\"http://www.skewable.com/picture_library/note_saved_bg.png\" width=\"100%\" height=\"100%\">\n  " +
+                        "<div class=\"photo-overlay\"/>\n  " +
+                        "<section>\n    " +
+                        "<p class=\"text-auto-size\">foobar</p>\n  " +
+                        "</section>\n  " +
+                        "<footer>\n    " +
+                        "<img src=\"http://skewable.com/preserve/app_icon.png\" class=\"left\">\n    " +
+                        "<p>Preserve</p>\n  " +
+                        "</footer>\n" +
+                        "</article>\n");
                 List<MenuItem> menuItemList = new ArrayList<MenuItem>();
                 menuItemList.add(new MenuItem().setAction("SHARE"));
                 menuItemList.add(new MenuItem().setAction("READ_ALOUD"));
@@ -179,7 +208,22 @@ public class NotifyServlet extends HttpServlet {
         body.setMimeType("image/jpeg");
 
         InputStreamContent content = new InputStreamContent("image/jpeg", stream);
-        File file = drive.files().insert(body, content).setConvert(true).execute();
+        File file = drive.files().insert(body, content).execute();
+        LOG.info("Drive result: " + file.getTitle());
+
+        return file.getId();
+    }
+
+    private String sendVideoToDrive(Credential credential, InputStream stream, String fileName) throws IOException {
+
+        Drive drive = DriveUtils.buildDriveService(credential);
+
+        File body = new File();
+        body.setTitle(fileName);
+        body.setMimeType("video/mp4");
+
+        InputStreamContent content = new InputStreamContent("video/mp4", stream);
+        File file = drive.files().insert(body, content).execute();
         LOG.info("Drive result: " + file.getTitle());
 
         return file.getId();
@@ -194,7 +238,7 @@ public class NotifyServlet extends HttpServlet {
         body.setMimeType("audio/mpeg");
 
         InputStreamContent content = new InputStreamContent("audio/mpeg", stream);
-        File file = drive.files().insert(body, content).setConvert(true).execute();
+        File file = drive.files().insert(body, content).execute();
         LOG.info("Drive result: " + file.getTitle());
 
         return file.getId();
