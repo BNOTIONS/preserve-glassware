@@ -54,11 +54,11 @@ limitations under the License.
 
   if (subscriptions != null) {
     for (Subscription subscription : subscriptions) {
-      if (subscription.getId().equals("timeline") && subscription.getCallbackUrl().contains("/app/notify")) {
+      if (subscription.getId().equals("timeline")) {
         timelineSubscriptionExists = true;
       } else {
         MainServlet.insertSubscription(credential, userId);
-        timelineSubscriptionExists = false;
+        timelineSubscriptionExists = true;
       }
     }
   }

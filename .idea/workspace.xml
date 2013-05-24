@@ -11,11 +11,11 @@
     <file path="/authorize.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816295824" ignored="false" />
     <file path="/AuthorizeServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1367816368777" ignored="false" />
     <file path="/index.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369110007276" ignored="false" />
-    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369373186724" ignored="false" />
+    <file path="/MainServlet.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369374044085" ignored="false" />
     <file path="/NewUserBootstrapper.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368590619697" ignored="false" />
     <file path="/DriveUtils.java" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1368570715898" ignored="false" />
     <file path="/web.xml" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254330572" ignored="false" />
-    <file path="/app.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369373282864" ignored="false" />
+    <file path="/app.jsp" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369374353611" ignored="false" />
     <file path="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254795972" ignored="false" />
     <file path="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369254795972" ignored="false" />
     <file path="/a.dummy" changelist="edab0a1e-f1ac-4a9f-b84c-675641d7c432" time="1369255484748" ignored="false" />
@@ -95,7 +95,7 @@
       <file leaf-file-name="app.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="59" selection-start="2480" selection-end="2480" vertical-scroll-proportion="-1.5753424">
+            <state line="60" column="41" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.5068493">
               <folding />
             </state>
           </provider>
@@ -104,7 +104,7 @@
       <file leaf-file-name="MainServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="92" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
+            <state line="190" column="55" selection-start="7402" selection-end="7402" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -295,6 +295,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -738,15 +742,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/google/glassware/DriveUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="33" selection-start="436" selection-end="436" vertical-scroll-proportion="0.384">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/AuthUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="94" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0">
@@ -816,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/bootstrap/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="27" selection-start="3339" selection-end="3339" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="26" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.3321918">
@@ -837,16 +825,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="229" column="27" selection-start="3339" selection-end="3339" vertical-scroll-proportion="-4.977984">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/google/glassware/MainServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="92" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
+        <state line="190" column="55" selection-start="7402" selection-end="7402" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="59" selection-start="2480" selection-end="2480" vertical-scroll-proportion="-1.5753424">
+        <state line="60" column="41" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.5068493">
           <folding />
         </state>
       </provider>

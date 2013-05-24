@@ -186,6 +186,12 @@ public class MainServlet extends HttpServlet {
 
     }
 
+    public static void removeSubscription(Credential credential, String id) throws IOException {
+
+        MirrorClient.deleteSubscription(credential, id);
+
+    }
+
     public static void insertGlass2DriveContact(Credential credential) throws IOException {
 
         Contact contact = new Contact();
