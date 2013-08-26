@@ -81,6 +81,7 @@ public class NotifyServlet extends HttpServlet {
 
             TimelineItem timelineItem = mirrorClient.timeline().get(notification.getItemId()).execute();
             LOG.info("Notification impacted timeline item with ID: " + timelineItem.getId());
+            LOG.info("Impacted Item RAW: " + timelineItem.toPrettyString());
 
             if (notification.getUserActions().contains(new UserAction().setType("SHARE"))
                     && timelineItem.getAttachments() != null && timelineItem.getAttachments().size() > 0) {
